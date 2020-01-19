@@ -113,49 +113,48 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
                                 <div class="wrap-about">
-
-                                    <canvas id="canvas" width="600" height="350"></canvas>
+                                    {{--<canvas id="canvas" width="600" height="350"></canvas>--}}
                                     <table class="w-content">
                                         <tr>
-                                            <td class="title">Фамилия </td>
+                                            <td class="title">Фамилия</td>
                                             <td class="break">:</td>
-                                            <td> Навоша</td>
+                                            <td>{{$user->last_name}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Имя </td>
+                                            <td class="title">Имя</td>
                                             <td class="break">:</td>
-                                            <td> Александр</td>
+                                            <td>{{$user->first_name}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Отчество </td>
+                                            <td class="title">Отчество</td>
                                             <td class="break">:</td>
-                                            <td> Юрьевич</td>
+                                            <td>{{$user->middle_name}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Email </td>
+                                            <td class="title">Email</td>
                                             <td class="break">:</td>
-                                            <td> blr.ymka@tut.by</td>
+                                            <td>{{$user->email}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Skype </td>
+                                            <td class="title">Skype</td>
                                             <td class="break">:</td>
-                                            <td> aleksandr.12131</td>
+                                            <td>{{$user->skype}}</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">LinkedIn </td>
+                                            <td class="title">LinkedIn</td>
                                             <td class="break">:</td>
                                             <td>
-                                                <a href="https://www.linkedin.com/in/aleksandr-nav-634303182/">
-                                                    Aleksandr Nav
+                                                <a href="{{$user->linkedin}}">
+                                                    {{"{$user->last_name} {$user->first_name}"}}
                                                 </a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Резюме </td>
+                                            <td class="title">Резюме</td>
                                             <td class="break">:</td>
                                             <td>
-                                                <a href="https://jobs.tut.by/resume/877438abff017c65090039ed1f66494a314c47">
-                                                    Aleksandr Nav
+                                                <a href="{{$user->cv}}">
+                                                    {{"{$user->last_name} {$user->first_name}"}}
                                                 </a>
                                             </td>
                                         </tr>
@@ -184,46 +183,20 @@
                     <div class="col-md-9 content-right">
                         <div class="row">
                             <ul class="listing-item">
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <p class="head-sm">
-                                            <a href="http://basheltorg.ru">
-                                                basheltorg.ru
-                                            </a>
-                                        </p>
-                                        <p class="text-grey">
-                                            Система ведения закупок государственных учреждений Республики Башкортостан.
-                                            Занимался разработкой back-end с использованием laravel 5.7/Postgres, front-end
-                                            с использованием vue.js. <br>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <p class="head-sm">
-                                            <a href="https://edu360.ru">
-                                                edu360.ru
-                                            </a>
-                                        </p>
-                                        <p class="text-grey">
-                                            Информационная система EDU360 - система ведения образовательного процесса средних
-                                            и высших учебных заведений РФ. Занимался в основном back-end разработкой с использованием
-                                            laravel 5.7/MySQL.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <p class="head-sm">
-                                            <a href="https://proton-lab.ru">
-                                                proton-lab.ru
-                                            </a>
-                                        </p>
-                                        <p class="text-grey">
-                                            Корпоративный сайт компании. Занимался переработкой серверной части, с использованием laravel 5.7.
-                                        </p>
-                                    </div>
-                                </li>
+                                @foreach($user->projects as $project)
+                                    <li>
+                                        <div class="col-md-4 col-sm-4">
+                                            <p class="head-sm">
+                                                <a href="{{$project->link}}">
+                                                    {{$project->name}}
+                                                </a>
+                                            </p>
+                                            <p class="text-grey">
+                                                {{$project->desc}}<br>
+                                            </p>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -246,92 +219,25 @@
                     </div>
                     <div class="col-md-9 content-right">
                         <div class="row">
-                            <ul class="listing-item">
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <h3 class="icon-use">
-                                            m
-                                        </h3>
-                                        <p class="head-sm">
-                                            Back-end
-                                        </p>
-                                        <p class="text-grey">
-                                            Разработка серверной части приложений
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <h3 class="icon-use">
-                                            n
-                                        </h3>
-                                        <p class="head-sm">
-                                            Database
-                                        </p>
-                                        <p class="text-grey">
-                                            Проектирование структуры баз данных приложений
-                                        </p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <h3 class="icon-use">
-                                            g
-                                        </h3>
-                                        <p class="head-sm">
-                                            UI/UX
-                                        </p>
-                                        <p class="text-grey">
-                                            Продумывание функционала приложений для удобства использования
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="listing-item">
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <h3 class="icon-use">
-                                            c
-                                        </h3>
-                                        <p class="head-sm">
-                                            Management
-                                        </p>
-                                        <p class="text-grey">
-                                            Создание функционала для управления приложением/автоматизации процессов
-                                        </p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <h3 class="icon-use">
-                                            d
-                                        </h3>
-                                        <p class="head-sm">
-                                            SPA
-                                        </p>
-                                        <p class="text-grey">
-                                            Разработка single page application
-                                        </p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="col-md-4 col-sm-4">
-                                        <h3 class="icon-use">
-                                            U
-                                        </h3>
-                                        <p class="head-sm">
-                                            Front-end
-                                        </p>
-                                        <p class="text-grey">
-                                            Разработка клиентской части приложений
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-
+                            @foreach($user->services->chunk(3) as $chunk)
+                                <ul class="listing-item">
+                                    @foreach($chunk as $service)
+                                        <li>
+                                            <div class="col-md-4 col-sm-4">
+                                                <h3 class="icon-use">
+                                                    {{$service->image}}
+                                                </h3>
+                                                <p class="head-sm">
+                                                    {{$service->name}}
+                                                </p>
+                                                <p class="text-grey">
+                                                    {{$service->desc}}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -354,70 +260,16 @@
                     <div class="col-md-9 content-right">
                         <!--SKILLIST-->
                         <div class="skillst">
-                            <div class="skillbar" data-percent="65%">
-                                <div class="title head-sm">
-                                    HTML 5
+                            @foreach($user->skills as $skill)
+                                <div class="skillbar" data-percent="{{$skill->performance}}%">
+                                    <div class="title head-sm">
+                                        {{$skill->name}}
+                                    </div>
+                                    <div class="count-bar">
+                                        <div class="count"></div>
+                                    </div>
                                 </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="70%">
-                                <div class="title head-sm">
-                                    CSS 3
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="65%">
-                                <div class="title head-sm">
-                                    js
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="58%">
-                                <div class="title head-sm">
-                                    vue.js
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="65%">
-                                <div class="title head-sm">
-                                    PHP
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="73%">
-                                <div class="title head-sm">
-                                    laravel
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="65%">
-                                <div class="title head-sm">
-                                    sql
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="80%">
-                                <div class="title head-sm">
-                                    git
-                                </div>
-                                <div class="count-bar">
-                                    <div class="count"></div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <!--/.SKILLIST END-->
                     </div>
@@ -441,53 +293,31 @@
                     <div class="col-md-9 content-right">
                         <div class="row">
                             <ul class="listing-item">
-                                <li>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="wrap-card">
-                                            <div class="card">
-                                                <h2 class="year">
-                                                    2002 - 2006
-                                                </h2>
-                                                <p class="job">
-                                                    Автомобилестроение
-                                                </p>
-                                                <p class="company">
-                                                    Минский государственный автомеханический колледж
-                                                </p>
-                                                <hr>
-                                                <div class="text-detail">
-                                                    <p>
-                                                        Очная форма обучения. Специальность - техник-технолог.
+                                @foreach($user->educations as $education)
+                                    <li>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="wrap-card">
+                                                <div class="card">
+                                                    <h2 class="year">
+                                                        {{"{$education->start} - {$education->end}"}}
+                                                    </h2>
+                                                    <p class="job">
+                                                        {{$education->name}}
                                                     </p>
+                                                    <p class="company">
+                                                        {{$education->institute}}
+                                                    </p>
+                                                    <hr>
+                                                    <div class="text-detail">
+                                                        <p>
+                                                            {{$education->desc}}
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="wrap-card">
-                                            <div class="card">
-                                                <h2 class="year">
-                                                    2006 - 2012
-                                                </h2>
-                                                <p class="job">
-                                                    Автомобилестроение
-                                                </p>
-                                                <p class="company">
-                                                    Белорусский национальный технический университет
-                                                </p>
-                                                <hr>
-                                                <div class="text-detail">
-                                                    <p>
-                                                        Заочная форма обучения, автотракторный факультет. Специальность - инженер.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -511,13 +341,15 @@
                     <div class="col-md-9 content-right">
                         <form>
                             <div class="group">
-                                <input required="" type="text"><span class="highlight"></span><span class="bar"></span><label>Имя</label>
+                                <input required="" type="text"><span class="highlight"></span><span
+                                        class="bar"></span><label>Имя</label>
                             </div>
                             <div class="group">
                                 <input required="" type="email"><span class="highlight"></span><span class="bar"></span><label>Email</label>
                             </div>
                             <div class="group">
-                                <textarea required=""></textarea><span class="highlight"></span><span class="bar"></span><label>Сообщение</label>
+                                <textarea required=""></textarea><span class="highlight"></span><span
+                                        class="bar"></span><label>Сообщение</label>
                             </div>
                             <input id="sendMessage" name="sendMessage" type="submit" value="Отправить сообщение">
                         </form>
@@ -532,10 +364,12 @@
             <div class="footer-top">
                 <ul class="socials">
                     <li class="tut">
-                        <a href="https://jobs.tut.by/resume/877438abff017c65090039ed1f66494a314c47" data-hover="Jobs.tut.by">Jobs.tut.by</a>
+                        <a href="{{$user->cv}}"
+                           data-hover="Jobs.tut.by">Jobs.tut.by</a>
                     </li>
                     <li class="linkedin">
-                        <a href="https://www.linkedin.com/in/aleksandr-nav-634303182/" data-hover="LinkedIn">LinkedIn</a>
+                        <a href="{{$user->cv}}"
+                           data-hover="LinkedIn">LinkedIn</a>
                     </li>
                 </ul>
             </div>
@@ -543,7 +377,7 @@
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                        <img src="images/grey-logo.svg" alt="logo bottom" class="center-block" />
+                        <img src="images/grey-logo.svg" alt="logo bottom" class="center-block"/>
                     </div>
                 </div>
             </div>
