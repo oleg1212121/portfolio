@@ -14,8 +14,11 @@ class MainPageController extends Controller
      */
     public function index()
     {
-        $user = User::findOrFail(1)->load('projects','educations','skills','services');
-        return view('main', compact('user'));
+        $users = User::all()->chunk(3);
+        return view('main', compact('users'));
+
+//        $user = User::findOrFail(1)->load('projects','educations','skills','services');
+//        return view('main', compact('user'));
     }
 
 //    /**
@@ -39,16 +42,17 @@ class MainPageController extends Controller
 //        //
 //    }
 //
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        //
-//    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        $user = $user->load('projects','educations','skills','services');
+        return view('users.users_show', compact('user'));
+    }
 //
 //    /**
 //     * Show the form for editing the specified resource.

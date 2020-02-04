@@ -11,4 +11,8 @@
 |
 */
 
-Route::resource('/', 'MainPageController')->only(['index']);
+Route::resource('users', 'MainPageController', ['users'])->only(['index','show']);
+Route::resource('articles', 'ArticleController', ['articles']);
+Route::get('/', function (){
+    return redirect()->route('users.index');
+});
