@@ -1,5 +1,9 @@
 @extends('layouts.layout')
 
+@section('menu')
+    @include('menu.user_menu')
+@endsection
+
 @section('content')
     <!--HOME-->
     <section id="home">
@@ -31,7 +35,6 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
                             <div class="wrap-about">
-                                {{--<canvas id="canvas" width="600" height="350"></canvas>--}}
                                 <table class="w-content">
                                     <tr>
                                         <td class="title">Фамилия</td>

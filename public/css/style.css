@@ -1017,4 +1017,7 @@ p {
 .skillst .count-bar .count span:after { border-top: 4px solid #FF5A30;}
 #canvas {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }

@@ -14,7 +14,7 @@ class MainPageController extends Controller
      */
     public function index()
     {
-        $users = User::all()->chunk(3);
+        $users = User::with('projects')->get()->chunk(3);
         return view('main', compact('users'));
 
 //        $user = User::findOrFail(1)->load('projects','educations','skills','services');
