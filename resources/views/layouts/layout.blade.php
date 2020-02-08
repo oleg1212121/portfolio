@@ -24,13 +24,7 @@
     <![endif]-->
 </head>
 <body>
-<!--PRELOADER-->
-<div id="preloader">
-    <div id="status">
-        <img alt="logo" src="{{asset('images/grey-logo.svg')}}">
-    </div>
-</div>
-<!--/.PRELOADER END-->
+@include('layouts.preloader')
 
 @yield('menu')
 
@@ -41,30 +35,7 @@
 
     @yield('content')
 
-    <!--FOOTER-->
-        <footer>
-            <div class="footer-top">
-                <ul class="socials">
-                    <li class="tut">
-                        {{--<a href="{{$user->cv}}"--}}
-                           {{--data-hover="Jobs.tut.by">Jobs.tut.by</a>--}}
-                    </li>
-                    <li class="linkedin">
-                        {{--<a href="{{$user->cv}}"--}}
-                           {{--data-hover="LinkedIn">LinkedIn</a>--}}
-                    </li>
-                </ul>
-            </div>
-
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row">
-                        <img src="{{asset('images/grey-logo.svg')}}" alt="logo bottom" class="center-block"/>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--/.FOOTER-END-->
+   @include('layouts.footer')
 
         <!--/.CONTENT END-->
     </div>
@@ -83,5 +54,7 @@
 <script src="{{asset('js/smooth-scroll.min.js')}} " type="text/javascript"></script>
 <script src="{{asset('js/typed.js')}} " type="text/javascript"></script>
 <script src="{{asset('js/main.js')}} " type="text/javascript"></script>
+
+@yield('scripts')
 </body>
 </html>

@@ -43,7 +43,7 @@ class ArticleController extends Controller
         $articles = Article::whereBetween('created_at', [Carbon::now()->subDay($options['period']), Carbon::now()])
             ->when( $options['category'] > 0, function($query) use ($options){
                 return $query->where('category_id', $options['category']);
-            })->with('category', 'type')->get()->chunk(3);
+            })->with('category', 'type')->get();
 
         return view('articles.articles_list', compact('articles', 'types', 'categories', 'periods', 'options'));
     }
