@@ -5,9 +5,10 @@
                 <div class="col-sm-8 col-md-7 py-4">
                     <h4 class="text-white">Меню</h4>
                     <ul class="list-unstyled">
+                        <li><a href="{{route('users.index')}}" class="text-white">Сотрудники</a></li>
+                        <li><a href="{{route('articles.index')}}" class="text-white">Новости</a></li>
+                        <li><a href="{{route('jobs.index')}}" class="text-white">Поиск работы</a></li>
                         @guest
-                            <li><a href="{{route('users.index')}}" class="text-white">Сотрудники</a></li>
-                            <li><a href="{{route('articles.index')}}" class="text-white">Новости</a></li>
                             <li><a href="{{route('register')}}" class="text-white">Регистрация</a></li>
                             <li><a href="{{route('login')}}" class="text-white">Логин</a></li>
                         @else
@@ -15,7 +16,7 @@
                                 <a class="text-white" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Выход') }}
                                 </a>
                             </li>
                         @endguest

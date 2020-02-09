@@ -221,3 +221,10 @@ section .container{
     margin: 40px 0 20px 0;
     font-size: 14px;
 }
+
+/* ----------------------------------------- canvas ---------------------------------------*/
+
+#canvas {
+    margin-left: auto;
+    margin-right: auto;
+}
