@@ -8,6 +8,7 @@
                         <li><a href="{{route('users.index')}}" class="text-white">Сотрудники</a></li>
                         <li><a href="{{route('articles.index')}}" class="text-white">Новости</a></li>
                         <li><a href="{{route('jobs.index')}}" class="text-white">Поиск работы</a></li>
+                        <li><a href="{{route('services.index')}}" class="text-white">Утилиты</a></li>
                         @guest
                             <li><a href="{{route('register')}}" class="text-white">Регистрация</a></li>
                             <li><a href="{{route('login')}}" class="text-white">Логин</a></li>

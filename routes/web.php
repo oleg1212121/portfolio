@@ -14,6 +14,8 @@
 Route::resource('users', 'MainPageController', ['users'])->only(['index','show']);
 Route::resource('articles', 'ArticleController', ['articles']);
 Route::resource('jobs', 'JobController', ['jobs'])->only(['index']);
+Route::resource('services', 'ServiceController', ['services'])->only(['index']);
+Route::post('services/get-hash', 'ServiceController@getHash');
 
 Route::get('/', function (){
     return redirect()->route('users.index');
