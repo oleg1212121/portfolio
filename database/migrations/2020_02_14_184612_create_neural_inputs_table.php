@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypesTable extends Migration
+class CreateNeuralInputsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('neural_inputs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->comment('Название типа новостей');
-            //$table->boolean('is_auto')->default(0)->comment('Признак доступности для создания пользователем');
+            $table->string('name')->comment('Название входного свойства');
+            $table->float('weight')->comment('Вес свойства');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('neural_inputs');
     }
 }

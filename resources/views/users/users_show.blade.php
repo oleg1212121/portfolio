@@ -28,7 +28,7 @@
     <section id="about">
         <div class="row">
             <div class="col-md-6 no-gutters no-pad">
-                <div class="bg-about"></div>
+                <div class="bg-about" @if($user->image)style="background-image: url('{{asset('storage/users/'.$user->id.'/'.$user->image)}}')"@endif></div>
             </div>
             <div class="col-md-6 no-gutters no-pad">
                 <div class="row">
@@ -80,6 +80,13 @@
                                             </a>
                                         </td>
                                     </tr>
+                                    @if(auth()->user() && (auth()->id() == $user->id))
+                                        <tr>
+                                            <td colspan="3">
+                                                <a href="{{route('users.edit', ['user' => auth()->id()])}}" class="btn btn-dark">Перейти к редактированию</a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </table>
                             </div>
                         </div>
@@ -92,6 +99,7 @@
     <!--/.ABOUT END-->
 
     <!--WORK-->
+    @if($user->projects->count() > 0)
     <section class="grey-bg mar-tm-10" id="work">
         <div class="container">
             <div class="row">
@@ -127,6 +135,7 @@
             </div>
         </div>
     </section>
+    @endif
     <!--/.WORK END-->
 
     {{--<!--SERVICES-->--}}
@@ -203,6 +212,7 @@
     {{--<!--/.SKILLS END-->--}}
 
     <!--EDUCATION-->
+    @if($user->educations->count() > 0)
     <section class="white-bg" id="education">
         <div class="container">
             <div class="row">
@@ -227,7 +237,7 @@
                                         <p class="card-text">
                                             {{$education->desc}}
                                             <br>
-                                            {{"{$education->start} - {$education->end}"}}
+                                            {{"{$education->startY} - {$education->endY}"}}
                                         </p>
                                     </div>
                                 </div>
@@ -238,6 +248,7 @@
             </div>
         </div>
     </section>
+    @endif
     <!--/.EDUCATION END-->
 
     {{--<!--CONTACT-->--}}

@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Type;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 class ArticleRequest extends FormRequest
 {
@@ -34,9 +32,8 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'type_id' => 'required|integer|exists:types,id',
-            'category_id' => 'required|integer|exists:categories,id',
-            'content' => 'required|string|max:9999'
+            'content' => 'required|string|max:9999',
+            'name' => 'required|string|max:255',
         ];
     }
 
@@ -46,8 +43,6 @@ class ArticleRequest extends FormRequest
     public function messages()
     {
         return [
-            'type_id.*' => 'Выберите корректный тип новости',
-            'category_id.*' => 'Выберите корректную категорию новости',
             'content.*' => 'Текст заметки не должен превышать 9999 символов',
         ];
     }

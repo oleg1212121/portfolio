@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Vedmant\FeedReader\Facades\FeedReader;
 
 class JobController extends Controller
 {
@@ -13,7 +14,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        return view('job.index');
+        $jobs = FeedReader::read('https://career.habr.com/vacancies/rss?currency=rur&currency_cd=0&division_ids%5B%5D=2&divisions%5B%5D=backend&page=1&per_page=25&salary_rur=0')->get_items(0,20);
+        return view('job.index', compact('jobs'));
     }
 
 //    /**

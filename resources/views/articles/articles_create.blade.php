@@ -9,7 +9,7 @@
         <br><br>
         <div class="row">
             <div class="col">
-                <h1>Создание новости</h1>
+                <h1>Создание заметки</h1>
             </div>
         </div>
         @if(count($errors->all()) > 0)
@@ -24,28 +24,13 @@
         <div class="row">
             <div class="col">
                 <form action="{{route('articles.store')}}" method="POST">
-                    @method('post')
                     @csrf
                     <div class="form-group">
-                        <label for="type">Выберите тип новости</label>
-                        <select class="form-control" name="type_id" id="type">
-                            <option value="" disabled>Выберите тип</option>
-                            @foreach($types as $key => $type)
-                                <option value="{{$key}}" {{ $loop->first ? "selected" : ""}}>{{ $type }}</option>
-                            @endforeach
-                        </select>
+                        <label for="name">Название заметки</label>
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="category">Выберите категорию новости</label>
-                        <select class="form-control" id="category" name="category_id">
-                            <option value="" disabled>Выберите категорию</option>
-                            @foreach($categories as $key => $category)
-                                <option value="{{$key}}" {{ $loop->first ? "selected" : ""}}>{{$category}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="content">Контентная часть новости</label>
+                        <label for="content">Контентная часть заметки</label>
                         <textarea class="form-control" id="content" name="content" rows="5" cols="10"></textarea>
                     </div>
                     <div class="form-group">

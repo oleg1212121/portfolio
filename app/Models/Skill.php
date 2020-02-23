@@ -12,6 +12,11 @@ class Skill extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'performance', 'user_id'
+        'name',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_skill', 'skill_id', 'user_id');
+    }
 }

@@ -9,7 +9,7 @@
         <br><br>
         <div class="row">
             <div class="col">
-                <h1>Новости</h1>
+                <h1>Заметки</h1>
             </div>
             <br><br><br>
         </div>
@@ -26,17 +26,8 @@
                             </select>
                         </div>
                         <div class="col">
-                            {{--<label for="category">Выберите категорию</label>--}}
-                            <select class="form-control" id="category" name="category">
-                                <option value="0" {{$options['category'] == 0 ? "selected" : ""}}>Все категории</option>
-                                @foreach($categories as $key => $category)
-                                    <option value="{{$key}}" {{$key == $options['category'] ? "selected" : ""}}>{{$category}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col">
                             <button type="submit" class="btn btn-success mb-2">Поиск</button>
-                            <a href="{{route('articles.create')}}" type="button" class="btn btn-dark mb-2">Создать новость</a>
+                            <a href="{{route('articles.create')}}" type="button" class="btn btn-dark mb-2">Создать заметку</a>
                         </div>
                     </div>
                 </form>
@@ -51,7 +42,7 @@
                     <div class="col-12">
                         <div class="card" >
                             <div class="card-body">
-                                <h5 class="card-title">{{$article->category->name.' ('.$article->type->name.')'}}</h5>
+                                <h5 class="card-title">{{$article->name}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$article->date}}</h6>
                                 <p class="card-text">{{$article->content}}</p>
                                 <a href="{{route('articles.edit', ['article' => $article->id])}}" class="btn btn-success mb-2">Редактировать</a>
@@ -70,7 +61,7 @@
         @else
             <div class="row">
                 <div class="col">
-                    <p>Нет новостей ...</p>
+                    <p>Нет заметок ...</p>
                 </div>
             </div>
         @endif

@@ -30,7 +30,7 @@
 
 @yield('scripts')
 
-{{--@stack('scripts')--}}
+@stack('scripts')
 
 
 </body>

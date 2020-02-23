@@ -18,13 +18,13 @@ class Education extends Model
 
     protected $table = 'educations';
 
-    public function getStartAttribute($value)
+    public function getStartYAttribute()
     {
-        return Carbon::parse($value)->format('Y');
+        return Carbon::parse($this->attributes['start'])->format('Y');
     }
 
-    public function getEndAttribute($value)
+    public function getEndYAttribute()
     {
-        return Carbon::parse($value)->format('Y');
+        return Carbon::parse($this->attributes['end'])->format('Y');
     }
 }

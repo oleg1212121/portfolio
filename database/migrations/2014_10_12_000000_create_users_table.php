@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('middle_name');
             $table->string('email')->unique();
             $table->string('skype')->unique();
-            $table->string('linkedin')->unique();
-            $table->string('cv');
+            $table->string('linkedin')->unique()->comment('Ссылка на профиль линкедин');
+            $table->string('cv')->comment('Ссылка на резюме');
+            $table->string('image')->nullable(true)->comment('Название файла иконки');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
