@@ -8,13 +8,9 @@
     <main role="main">
         <section class="jumbotron my-0 text-center">
             <div class="container">
-                <h1>Список сотрудников</h1>
+                <h1>DID IT LOOK GOOD ON THE TELE?</h1>
                 <p class="lead text-muted">
-                    На этой странице представлен список подтвержденных сотрудников.
-                </p>
-                <p>
-                    {{--<a href="#" class="btn btn-primary my-2">Main call to action</a>--}}
-                    {{--<a href="{{ route('articles.index') }}" class="btn btn-secondary my-2">Перейти к новостям</a>--}}
+                    "© Tyson Fury after win"
                 </p>
             </div>
         </section>
@@ -22,28 +18,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
+                        <div class="row">
+                            <div class="col">
+                                <h5>
+                                    Список сотрудников
+                                </h5>
+                            </div>
+                        </div>
+                        <hr>
                         @foreach($users as $row)
                             <div class="row">
                                 @foreach($row as $user)
-                                    <div class="col-md-4">
-                                        <div class="card mb-4 shadow-sm">
-                                            <div class="card-header">
-                                                <p class="card-text">
-                                                    <strong>
-                                                        {{$user->last_name.' '.$user->first_name.' '.$user->middle_name}}
-                                                    </strong>
-                                                </p>
+                                    <div class="card mb-3">
+                                        <div class="row no-gutters">
+                                            <div class="col-lg-4">
+                                                <img src="{{$user->image ? asset('storage/users/'.$user->id.'/'.$user->image):asset('images/default-mini.jpg')}}" class="card-img" alt="...">
                                             </div>
-                                            <div class="card-body">
-                                                <p class="card-text">
-                                                    {{'Проектов - '.$user->projects->count()}}
-                                                </p>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div class="btn-group">
-                                                        <a href="{{route('users.show', ['user' => $user->id])}}" type="button" class="btn btn-sm btn-outline-secondary">Профиль</a>
-                                                        {{--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>--}}
-                                                    </div>
-                                                    {{--<small class="text-muted">9 mins</small>--}}
+                                            <div class="col-lg-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{$user->last_name.' '.$user->first_name.' '.$user->middle_name}}</h5>
+                                                    <p class="card-text">{{'Skype - '.$user->skype}}</p>
+                                                    <p class="card-text"><small class="text-muted">{{'Проектов - '.$user->projects->count()}}</small></p>
+                                                    <a href="{{route('users.show', ['user' => $user->id])}}" type="button" class="btn btn-sm btn-outline-secondary">Профиль</a>
                                                 </div>
                                             </div>
                                         </div>

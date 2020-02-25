@@ -5,10 +5,8 @@ Route::resource('articles', 'ArticleController', ['articles'])->only(['index', '
 Route::resource('jobs', 'JobController', ['jobs'])->only(['index']);
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::resource('articles', 'ArticleController', ['articles'])->only(['create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('users', 'MainPageController', ['users'])->only(['edit','update','destroy'])->middleware('self');
-    Route::get('users/{user}/edit', 'MainPageController@edit')->name('users.edit');
-    Route::put('users/{user}', 'MainPageController@update')->name('users.update');
-    Route::delete('users/{user}', 'MainPageController@destroy')->name('users.destroy');
 });
 
 Route::get('/', function (){
