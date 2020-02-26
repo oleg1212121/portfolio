@@ -22,16 +22,16 @@
         @endif
         <div class="row">
             <div class="col">
-                <form action="{{route('articles.update', ['article' => $article->id])}}" method="POST">
+                <form action="{{route('articles.update', ['article' => $article->id])}}" method="POST" novalidate class="needs-validation">
                     @method('put')
                     @csrf
                     <div class="form-group">
                         <label for="name">Название заметки</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{$article->name}}">
+                        <input required pattern=".{1,255}" type="text" class="form-control" id="name" name="name" value="{{$article->name}}">
                     </div>
                     <div class="form-group">
                         <label for="content">Контентная часть</label>
-                        <textarea class="form-control" id="content" name="content">{{ $article->content }}</textarea>
+                        <textarea required maxlength="9999" class="form-control" id="content" name="content">{{ $article->content }}</textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success mb-2">Сохранить</button>

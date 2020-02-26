@@ -23,15 +23,15 @@
         @endif
         <div class="row">
             <div class="col">
-                <form action="{{route('articles.store')}}" method="POST">
+                <form action="{{route('articles.store')}}" method="POST" class="needs-validation" novalidate>
                     @csrf
                     <div class="form-group">
                         <label for="name">Название заметки</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" required pattern=".{1,255}">
                     </div>
                     <div class="form-group">
                         <label for="content">Контентная часть заметки</label>
-                        <textarea class="form-control" id="content" name="content" rows="5" cols="10"></textarea>
+                        <textarea class="form-control" id="content" name="content" rows="5" cols="10" required maxlength="9999"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success mb-2">Создать</button>
@@ -42,4 +42,6 @@
         </div>
         <br><br>
     </div>
+
+
 @endsection

@@ -29,37 +29,44 @@
         </div>
         <div class="row">
             <div class="col">
-                <form method="post" action="{{route('users.update', ['user' => $user->id])}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('users.update', ['user' => $user->id])}}" enctype="multipart/form-data" novalidate class="needs-validation">
                     @method('PUT')
                     @csrf
                     <div class="form-group">
                         <label for="last_name">Фамилия</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{$user->last_name}}">
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="{{$user->last_name}}"
+                               required pattern="[A-Za-zА-Яа-яЁё\s\-]{1,255}">
                     </div>
                     <div class="form-group">
                         <label for="first_name">Имя</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" value="{{$user->first_name}}">
+                        <input type="text" class="form-control" id="first_name" name="first_name"
+                               value="{{$user->first_name}}" required pattern="[A-Za-zА-Яа-яЁё\s\-]{1,255}">
                     </div>
                     <div class="form-group">
                         <label for="middle_name">Отчество</label>
-                        <input type="text" class="form-control" id="middle_name" name="middle_name" value="{{$user->middle_name}}">
+                        <input type="text" class="form-control" id="middle_name" name="middle_name" value="{{$user->middle_name}}"
+                               required pattern="[A-Za-zА-Яа-яЁё\s\-]{1,255}">
                     </div>
                     <div class="form-group">
                         <label for="email">Почта</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}">
+                        <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="skype">Skype</label>
-                        <input type="text" class="form-control" id="skype" name="skype" value="{{$user->skype}}">
+                        <input type="text" class="form-control" id="skype" name="skype" value="{{$user->skype}}"
+                               required pattern=".{1,255}">
                     </div>
 
                     <div class="form-group">
                         <label for="linkedin">Linkedin</label>
-                        <input type="text" class="form-control" id="linkedin" name="linkedin" value="{{$user->linkedin}}">
+                        <input type="url" class="form-control" id="linkedin" name="linkedin" value="{{$user->linkedin}}"
+                               required pattern="http(s)?://.*">
                     </div>
                     <div class="form-group">
                         <label for="cv">Резюме</label>
-                        <input type="text" class="form-control" id="cv" name="cv" value="{{$user->cv}}">
+                        <input type="url" class="form-control" id="cv" name="cv" value="{{$user->cv}}"
+                               required pattern="http(s)?://.*">
                     </div>
                     <div class="form-group">
                         <label for="image">Изображение</label>
