@@ -6,8 +6,7 @@
 
 @section('content')
     <div class="container">
-        <br><br>
-        <div class="row">
+        <div class="row my-4">
             <div class="col">
                 <h1>Создание заметки</h1>
             </div>
@@ -21,17 +20,19 @@
                 </div>
             </div>
         @endif
-        <div class="row">
+        <div class="row mb-4">
             <div class="col">
                 <form action="{{route('articles.store')}}" method="POST" class="needs-validation" novalidate>
                     @csrf
                     <div class="form-group">
                         <label for="name">Название заметки</label>
-                        <input type="text" class="form-control" id="name" name="name" required pattern=".{1,255}">
+                        <input type="text" class="form-control" id="name" name="name" required pattern=".{1,255}"
+                               placeholder="Введите название">
                     </div>
                     <div class="form-group">
                         <label for="content">Контентная часть заметки</label>
-                        <textarea class="form-control" id="content" name="content" rows="5" cols="10" required maxlength="9999"></textarea>
+                        <textarea class="form-control" id="content" name="content" rows="5" cols="10" required maxlength="9999"
+                                  placeholder="Содержимое заметки..."></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success mb-2">Создать</button>
@@ -40,7 +41,6 @@
                 </form>
             </div>
         </div>
-        <br><br>
     </div>
 
 

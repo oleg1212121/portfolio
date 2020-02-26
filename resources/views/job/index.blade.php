@@ -12,14 +12,14 @@
                     <h3 class="text-center">Вакансии career.habr.com</h3>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col text-center">
                     <canvas id="canvas" width="600" height="350"></canvas>
                 </div>
             </div>
             <div class="row">
                 @foreach($jobs as $item)
-                    <div class="col">
+                    <div class="col-md-6 col-lg-4">
                         <div class="media">
                             <div class="media-body">
                                 <h5 class="mt-0">
@@ -30,6 +30,7 @@
                                 {{$item->get_description()}}
                             </div>
                         </div>
+                        <hr>
                     </div>
                 @endforeach
             </div>

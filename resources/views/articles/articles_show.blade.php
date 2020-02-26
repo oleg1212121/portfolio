@@ -6,25 +6,22 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row my-4">
             <div class="col">
-                <h1 class="text-center">Просмотр</h1>
+                <h1>Просмотр</h1>
             </div>
         </div>
-        <br><br>
-        <div class="row">
+        <div class="row mb-4">
             <div class="col">
-                <div class="card text-center">
+                <div class="card">
                     <div class="card-header">
-
+                        <h5 class="card-title">{{$article->name}}</h5>
+                        <span class="card-subtitle mb-2 text-muted">{{$article->date}}</span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{$article->name}}</h5>
                         <p class="card-text">{{$article->content}}</p>
+                        <hr>
                         <a href="{{route('articles.index')}}" type="button" class="btn btn-dark mb-2">Назад</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        {{$article->date}}
                     </div>
                 </div>
             </div>

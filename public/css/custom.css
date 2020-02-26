@@ -1,6 +1,10 @@
 html,
 body {
     min-height: 105vh;
+    color: #343a40;
+}
+a, a:hover {
+    color: #343a40;
 }
 
 footer img {
@@ -232,4 +236,9 @@ section .container{
     #canvas {
         display: none;
     }
+}
+
+/*--------------------------------------------- card -------------------------------------------*/
+.card-title a {
+    color: #343a40;
 }

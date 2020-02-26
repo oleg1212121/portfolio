@@ -29,7 +29,7 @@
                         @foreach($users as $row)
                             <div class="row">
                                 @foreach($row as $user)
-                                    <div class="card mb-3">
+                                    <div class="card border-secondary mb-3">
                                         <div class="row no-gutters">
                                             <div class="col-lg-4">
                                                 <img src="{{$user->image ? asset('storage/users/'.$user->id.'/'.$user->image):asset('images/default-mini.jpg')}}" class="card-img" alt="...">
@@ -58,7 +58,7 @@
                         </div>
                         <hr>
                         @foreach($news as $item)
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col">
                                     <div class="media">
                                         <div class="media-body">
@@ -70,6 +70,7 @@
                                             {{$item->get_description()}}
                                         </div>
                                     </div>
+                                    <hr>
                                 </div>
                             </div>
                         @endforeach

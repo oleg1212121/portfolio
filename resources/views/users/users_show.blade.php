@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6 no-gutters no-pad">
                 <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 white-col">
+                <div class="col-12 white-col">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
                             <div class="wrap-about">
@@ -83,7 +83,13 @@
                                     @if(auth()->user() && (auth()->id() == $user->id))
                                         <tr>
                                             <td colspan="3">
-                                                <a href="{{route('users.edit', ['user' => auth()->id()])}}" class="btn btn-dark">Перейти к редактированию</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <a href="{{route('users.edit', ['user' => auth()->id()])}}" class="btn btn-dark">
+                                                    Редактирование
+                                                </a>
                                             </td>
                                         </tr>
                                     @endif
@@ -107,6 +113,7 @@
                     <h3 class="title-small">
                         <span>Проекты</span>
                     </h3>
+                    <hr>
                     <p class="content-detail">
                         Проекты в которых я принимал участие.
                     </p>
@@ -115,14 +122,15 @@
                     <div class="row">
                         @foreach($user->projects as $project)
                             <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
+                                <div class="card border-secondary mb-3">
+                                    <div class="card-header">
                                         <h5 class="card-title">
                                             <a href="{{$project->link}}">
                                                 {{$project->name}}
                                             </a>
                                         </h5>
-                                        {{--<h6 class="card-subtitle mb-2 text-muted">{{$education->name}}</h6>--}}
+                                    </div>
+                                    <div class="card-body">
                                         <p class="card-text">
                                             {{$project->desc}}
                                         </p>
@@ -136,80 +144,6 @@
         </div>
     </section>
     @endif
-    <!--/.WORK END-->
-
-    {{--<!--SERVICES-->--}}
-    {{--<section class="white-bg" id="services">--}}
-        {{--<div class="container">--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-md-3">--}}
-                    {{--<h3 class="title-small">--}}
-                        {{--<span>Услуги</span>--}}
-                    {{--</h3>--}}
-                    {{--<p class="content-detail">--}}
-                        {{--Чем я занимаюсь.--}}
-                    {{--</p>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-9 content-right">--}}
-                    {{--<div class="row">--}}
-                        {{--@foreach($user->services->chunk(3) as $chunk)--}}
-                            {{--<ul class="listing-item">--}}
-                                {{--@foreach($chunk as $service)--}}
-                                    {{--<li>--}}
-                                        {{--<div class="col-md-4 col-sm-4">--}}
-                                            {{--<h3 class="icon-use">--}}
-                                                {{--{{$service->image}}--}}
-                                            {{--</h3>--}}
-                                            {{--<p class="head-sm">--}}
-                                                {{--{{$service->name}}--}}
-                                            {{--</p>--}}
-                                            {{--<p class="text-grey">--}}
-                                                {{--{{$service->desc}}--}}
-                                            {{--</p>--}}
-                                        {{--</div>--}}
-                                    {{--</li>--}}
-                                {{--@endforeach--}}
-                            {{--</ul>--}}
-                        {{--@endforeach--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
-    {{--<!--/.SERVICES END-->--}}
-
-    {{--<!--SKILLS-->--}}
-    {{--<section class="grey-bg" id="skill">--}}
-        {{--<div class="container">--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-md-3">--}}
-                    {{--<h3 class="title-small">--}}
-                        {{--<span>Навыки</span>--}}
-                    {{--</h3>--}}
-                    {{--<p class="content-detail">--}}
-                        {{--Технологии используемые в работе.--}}
-                    {{--</p>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-9 content-right">--}}
-                    {{--<!--SKILLIST-->--}}
-                    {{--<div class="skillst">--}}
-                        {{--@foreach($user->skills as $skill)--}}
-                            {{--<div class="skillbar" data-percent="{{$skill->performance}}%">--}}
-                                {{--<div class="title head-sm">--}}
-                                    {{--{{$skill->name}}--}}
-                                {{--</div>--}}
-                                {{--<div class="count-bar">--}}
-                                    {{--<div class="count"></div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--@endforeach--}}
-                    {{--</div>--}}
-                    {{--<!--/.SKILLIST END-->--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
-    {{--<!--/.SKILLS END-->--}}
 
     <!--EDUCATION-->
     @if($user->educations->count() > 0)
@@ -220,6 +154,7 @@
                     <h3 class="title-small">
                         <span>Образование</span>
                     </h3>
+                    <hr>
                     <p class="content-detail">
                         Оконченные учебные заведения.
                     </p>
@@ -228,11 +163,13 @@
                     <div class="row">
                         @foreach($user->educations as $education)
                             <div class="col-md-6 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body">
+                                <div class="card border-secondary mb-3">
+                                    <div class="card-header">
                                         <h5 class="card-title">
                                             {{$education->institute}}
                                         </h5>
+                                    </div>
+                                    <div class="card-body">
                                         <h6 class="card-subtitle mb-2 text-muted">{{$education->name}}</h6>
                                         <p class="card-text">
                                             {{$education->desc}}

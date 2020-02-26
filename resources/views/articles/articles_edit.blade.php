@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row my-4">
             <div class="col">
                 <h1>Редактирование заметки</h1>
             </div>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         @endif
-        <div class="row">
+        <div class="row mb-4">
             <div class="col">
                 <form action="{{route('articles.update', ['article' => $article->id])}}" method="POST" novalidate class="needs-validation">
                     @method('put')
