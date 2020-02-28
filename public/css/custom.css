@@ -242,3 +242,18 @@ section .container{
 .card-title a {
     color: #343a40;
 }
+
+
+.sorting-label-desc, .sorting-label-asc {
+    color: grey;
+    border: 2px solid transparent;
+    padding: 2px 5px;
+}
+input#desc:checked ~ .sorting-label-desc {
+    color: #1167bd;
+    border: 2px solid #1167bd;
+}
+input#asc:checked ~ .sorting-label-asc {
+    color: #1167bd;
+    border: 2px solid #1167bd;
+}

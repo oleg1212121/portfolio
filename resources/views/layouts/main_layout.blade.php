@@ -11,6 +11,8 @@
 
     <!--styles-->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('libraries/css/font-awesome.min.css')}}" rel="stylesheet">
+
 
 
     <title>TEA</title>

@@ -10,22 +10,6 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     /**
-     * @var array Массив значений для фильтра новостей.
-     */
-    protected $periods = [
-        5 => 'Заметки за последние 5 дней',
-        10 => 'Заметки за последние 10 дней',
-        15 => 'Заметки за последние 15 дней',
-    ];
-
-    /**
-     * @var array Массив значений для настройки фильтрации на странице списка новостей.
-     */
-    protected $options = [
-        "period" => 5,
-    ];
-
-    /**
      * Display a listing of the resource.
      *
      * @param  Request  $request
@@ -33,13 +17,13 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $periods = $this->periods;
         $options = $this->checkOptions($request->all());
-        $articles = Article::whereBetween('created_at', [Carbon::now()->subDay($options['period']), Carbon::now()])
-            ->orderBy('created_at','desc')
+        $articles = Article::whereDate('created_at', '>=', $options['start_date'])
+            ->whereDate('created_at', '<=', $options['end_date'])
+            ->orderBy('created_at', $options['sort'])
             ->get();
 
-        return view('articles.articles_list', compact('articles', 'periods', 'options'));
+        return view('articles.articles_list', compact('articles', 'options'));
     }
 
     /**
@@ -122,10 +106,16 @@ class ArticleController extends Controller
      */
     protected function checkOptions(array $data = [])
     {
-        $options = $this->options;
-        foreach ($data as $key => $item) {
-            $options[$key] = (int) $item;
-        }
-        return $options;
+        /**
+         * Проверка опций из реквеста, задание значений по умолчанию (для исключения ошибок ввода)
+         * todo: потом переделать под ajax
+         */
+        return [
+            'start_date' => ($x = \DateTime::createFromFormat('Y-m-d', ($data['start_date'] ?? ''))) ? $x->format('Y-m-d')
+                : (date('Y-m-d', time() - (25 * 24 * 60 * 60))),
+            'end_date' => ($y = \DateTime::createFromFormat('Y-m-d', ($data['end_date'] ?? ''))) ? $y->format('Y-m-d')
+                : (date('Y-m-d')),
+            'sort' => ($data['sort'] ?? '') == 'asc' ? 'asc' : 'desc',
+        ];
     }
 }
