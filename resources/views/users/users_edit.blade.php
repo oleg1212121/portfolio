@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row my-4">
             <div class="col">
                 <h3>
                     Редактирование
@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success mb-2">Сохранить текущие изменения</button>
-                        <a href="{{route('users.show', ['user' => auth()->id()])}}" type="button" class="btn btn-dark mb-2">Назад</a>
+                        <a href="{{route('users.show', ['user' => auth()->id()])}}" type="button" class="btn btn-secondary mb-2">Назад</a>
                     </div>
                 </form>
                 <br><br>

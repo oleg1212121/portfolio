@@ -152,7 +152,7 @@
                                 <button type="submit" class="btn btn-success mb-2">
                                     Регистрация
                                 </button>
-                                <a href="{{route('users.index')}}" type="button" class="btn btn-dark mb-2">Назад</a>
+                                <a href="{{route('users.index')}}" type="button" class="btn btn-secondary mb-2">Назад</a>
                             </div>
                         </div>
                     </form>

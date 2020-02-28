@@ -20,7 +20,7 @@
 
   var canvas = document.getElementById('canvas');
   if(!!canvas) {
-    // todo: fix small screen
+
     var ctx = canvas.getContext('2d');
 
     // массив координат для отображения изображений

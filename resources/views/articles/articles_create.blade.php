@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success mb-2">Создать</button>
-                        <a href="{{route('articles.index')}}" type="button" class="btn btn-dark mb-2">Назад</a>
+                        <a href="{{route('articles.index')}}" type="button" class="btn btn-secondary mb-2">Назад</a>
                     </div>
                 </form>
             </div>

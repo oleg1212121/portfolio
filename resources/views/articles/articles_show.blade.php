@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <p class="card-text">{{$article->content}}</p>
                         <hr>
-                        <a href="{{route('articles.index')}}" type="button" class="btn btn-dark mb-2">Назад</a>
+                        <a href="{{route('articles.index')}}" type="button" class="btn btn-secondary mb-2">Назад</a>
                     </div>
                 </div>
             </div>

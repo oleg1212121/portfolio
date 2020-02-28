@@ -62,7 +62,7 @@
                                 <button type="submit" class="btn btn-success mb-2">
                                    Войти
                                 </button>
-                                <a href="{{route('users.index')}}" type="button" class="btn btn-dark mb-2 mr-2">Назад</a>
+                                <a href="{{route('users.index')}}" type="button" class="btn btn-secondary mb-2 mr-2">Назад</a>
 
                             @if (Route::has('password.request'))
                                     <a class="btn btn-link mb-2 pl-0" href="{{ route('password.request') }}">

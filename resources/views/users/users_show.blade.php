@@ -87,7 +87,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3">
-                                                <a href="{{route('users.edit', ['user' => auth()->id()])}}" class="btn btn-dark">
+                                                <a href="{{route('users.edit', ['user' => auth()->id()])}}" class="btn btn-secondary">
                                                     Редактирование
                                                 </a>
                                             </td>

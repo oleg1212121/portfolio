@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-success mb-2">Поиск</button>
-                            <a href="{{route('articles.create')}}" type="button" class="btn btn-dark mb-2">Создать заметку</a>
+                            <a href="{{route('articles.create')}}" type="button" class="btn btn-secondary mb-2">Создать заметку</a>
                         </div>
                     </div>
                 </form>

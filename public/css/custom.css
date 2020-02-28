@@ -94,7 +94,7 @@ section .container{
     left: 50%;
     top: 50%;
     padding: 65px;
-    background: #FF5A30;
+    background: #1167bd;
     border: 2px solid black;
     color: #fff;
     /*outline: 4px double #ff5a30;*/
@@ -106,7 +106,7 @@ section .container{
 .mouse-icon {
     position: absolute;
     border: 2px solid #2f2f2f;
-    background: #ff5a30;
+    background: #1167bd;
     /*opacity: 0.8;*/
     border-radius: 13px;
     height: 40px;
@@ -136,7 +136,7 @@ section .container{
 .mouse-icon .scroll {
     position: relative;
     border-radius: 10px;
-    background: #2f2f2f;
+    background: #fff;
     width: 4px;
     height: 8px;
     top: 4px;

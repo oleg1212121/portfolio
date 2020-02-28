@@ -36,7 +36,8 @@ class ArticleController extends Controller
         $periods = $this->periods;
         $options = $this->checkOptions($request->all());
         $articles = Article::whereBetween('created_at', [Carbon::now()->subDay($options['period']), Carbon::now()])
-           ->get();
+            ->orderBy('created_at','desc')
+            ->get();
 
         return view('articles.articles_list', compact('articles', 'periods', 'options'));
     }
