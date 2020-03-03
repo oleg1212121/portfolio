@@ -15,9 +15,11 @@ class StatisticController extends Controller
      */
     public function index()
     {
-        $clients = Client::select(\DB::raw('concat(ip, " " , platform, " " , browser, " " , version) as client'))
+        $clients = Client::select('ip', \DB::raw('concat(coalesce(`platform`,""), " " , coalesce(`browser`,""), " " , coalesce(`version`,"")) as client'))
             ->whereDate('created_at', '>=', Carbon::now()->subDays(25)->format('Y-m-d'))
-            ->get()->groupBy('client');
+            ->orderBy('created_at', 'desc')
+            ->get()->groupBy(['client', 'ip']);
+
         return view('statistic.index', compact('clients'));
     }
 

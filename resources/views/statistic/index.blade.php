@@ -15,7 +15,12 @@
             @foreach($clients as $key => $client)
                 <div class="row mb-4">
                     <div class="col">
-                        {{'Клиент - '.$key.' ('.$client->count().' - переходов)'}}
+                        <b>{{'Клиент - '.$key}}</b>
+                        <br>
+                        @foreach($client as $k => $ip)
+                            {{'----------- ip - '.$k.' ('.$ip->count().' - переходов)'}}
+                            <br>
+                        @endforeach
                     </div>
                 </div>
             @endforeach
