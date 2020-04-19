@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class ServiceController extends Controller
 {
 
+    //todo: переделать
     protected $expected = 0.9;
     protected $learningRate = 0.1;
 

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\CustomServices\TranslatorService;
 use App\Jobs\CreateFilmDictionary;
 use App\Models\Film;
-use App\Models\Word;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {

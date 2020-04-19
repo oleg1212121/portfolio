@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Vedmant\FeedReader\Facades\FeedReader;
 
 class JobController extends Controller
