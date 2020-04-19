@@ -10,6 +10,10 @@ Route::group(['middleware' => 'statistic'], function(){
     Route::group(['middleware' => 'auth'], function(){
         Route::resource('articles', 'ArticleController', ['articles'])->only(['create', 'store', 'edit', 'update', 'destroy']);
         Route::resource('users', 'MainPageController', ['users'])->only(['edit','update','destroy'])->middleware('self');
+        Route::resource('words', 'WordController', ['words'])->only(['index']);
+        Route::resource('films', 'FilmController', ['films']);
+        Route::post('/mark_word/{word}', 'WordController@learn');
+        Route::post('/translate_word/{word}', 'WordController@correctionTranslate');
     });
 
     Route::get('/', function (){

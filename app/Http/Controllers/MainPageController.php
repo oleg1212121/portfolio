@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\CustomServices\EducationsSyncService;
 use App\Http\CustomServices\ProjectsSyncService;
 use App\Http\Requests\UserEditRequest;
+use App\Models\Word;
 use App\Skill;
 use App\User;
 use Illuminate\Support\Facades\Storage;
+use KubAT\PhpSimple\HtmlDomParser;
 use Vedmant\FeedReader\Facades\FeedReader;
 
 class MainPageController extends Controller
@@ -19,6 +21,45 @@ class MainPageController extends Controller
      */
     public function index()
     {
+
+//        dd(file('a'));
+//        $dom = HtmlDomParser::file_get_html( base_path() . '/public/images/a.html' );
+//        $items = $dom->find('tr');
+//$text = file_get_html(base_path() . '/public/images/a.html');
+//$t = mb_split('~[0-9]*~', $text[0]);
+//dd($t);
+//        foreach($text as $item) {
+//            $itemsss = preg_replace('~\[[^0-9]*\]~', '_', $item);
+//            $itemss = preg_replace('~[0-9]~', '<<', $itemsss);
+//            $items = preg_split('~\<[^\<]*\<~', $itemss, -1, 1);
+////            dd($items);
+//            foreach ($items as $i) {
+//                $data = explode('_', $i);
+//                if(isset($data[0]) && isset($data[1])){
+//                    Word::updateOrCreate(
+//                        ['word' => $data[0]],
+//                        ['translate' => $data[1]]
+//                    );
+//                }else{
+////                    dd($data);
+//                }
+//            }
+//        }
+
+//
+//            foreach($items as $item) {
+//                $word = $item->find('td', 1)->find('text',0)->innertext;
+//                $translate = $item->find('td', 2)->find('text',0)->innertext;
+//                    Word::updateOrCreate(
+//                        ['word' => $word],
+//                        ['translate' => $translate]
+//                    );
+//            }
+//
+//        dd('gg');
+
+
+
         $users = User::with('projects','skills')->get()->chunk(3);
         $news = FeedReader::read('https://dev.by/news?tag=RSS')->get_items(0,3);
         return view('main', compact('users', 'news'));

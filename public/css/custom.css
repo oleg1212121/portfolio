@@ -257,3 +257,24 @@ input#asc:checked ~ .sorting-label-asc {
     color: #1167bd;
     border: 2px solid #1167bd;
 }
+
+/*----------------------------------words -------------------------------*/
+.words td{
+    border: 1px solid grey;
+
+}
+.answer {
+    color:grey;
+}
+.hide_answer .answer {
+    color:transparent;
+}
+.word-row{
+    border: 1px solid grey;
+}
+td.answer:hover {
+    color:black;
+}
+tr td.word:hover {
+    color:black;
+}
