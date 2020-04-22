@@ -39,8 +39,9 @@ class FixEmptyTranslate extends Command
      */
     public function handle()
     {
-        $words = Word::where('translate', '')->pluck('word')->toArray();
-        $answers = TranslatorService::getYandexApiTranslate($words);
+        $words = Word::where('translate', '')->get();
+        $data = $words->pluck('word')->toArray();
+        $answers = TranslatorService::getYandexApiTranslate($data);
 
         foreach ($words as $key => $item) {
             $item->update([

@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\Searchable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +19,13 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name','middle_name','last_name', 'email','skype','linkedin','cv', 'image', 'password',
     ];
+
+    /**
+     * Массив полей для поиска (Searchable)
+     *
+     * @var array
+     */
+    protected $searchable = ['first_name', 'last_name', 'middle_name'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -48,5 +56,10 @@ class User extends Authenticatable
     public function educations()
     {
         return $this->hasMany(Education::class);
+    }
+
+    public function scopePepe($query)
+    {
+        return $query->where('rating', 0);
     }
 }
