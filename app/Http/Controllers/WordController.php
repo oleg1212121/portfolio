@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\CustomServices\TranslatorService;
 use App\Models\Film;
 use App\Models\Word;
+use Illuminate\Http\Request;
 
 class WordController extends Controller
 {
@@ -20,20 +21,25 @@ class WordController extends Controller
         return view('words.index', compact('words'));
     }
 
-    public function learn(Word $word)
+    public function learn(Request $request,Word $word)
     {
-        $word->update(['status' => 0]);
+        $arg = (int) $request->input('argument', 0);
+        $status = ($sum = $word->status + $arg) <= 0 ? 0 : $sum ;
+        $word->update(['status' => $status]);
         return response('all good', 200);
     }
 
     public function correctionTranslate(Word $word)
     {
-        $res = TranslatorService::getYandexDictionaryTranslate($word->word);;
-        if($res != ''){
-            $word->update(['translate' => $res]);
-        }else{
-            $res = $word->translate;
+        $res = TranslatorService::getYandexDictionaryTranslate($word->word);
+        if($res == ''){
+            $res = TranslatorService::getYandexApiTranslate([$word->word])[0] ?? '';
+            if($res == ''){
+                $res = $word->translate;
+            }
         }
+
+        $word->update(['translate' => $res]);
         return response()->json([
             'answer' => $res
         ]);
@@ -93,26 +99,34 @@ class WordController extends Controller
 //        //
 //    }
 //
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function update(Request $request, $id)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function destroy($id)
-//    {
-//        //
-//    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Word  $word
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,Word $word)
+    {
+        $data = $request->only('translate');
+
+        $word->update($data);
+
+        return response()->json([
+            'answer' => $data['translate']
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Word  $word
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Word  $word)
+    {
+        $word->delete();
+
+        return response('All good', 200);
+    }
 }
