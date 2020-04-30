@@ -14,11 +14,12 @@ class WordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $words = Word::where('status', '!=', '0')->where('rating', '<', 301)->orderBy('rating')->orderBy('id')->get();
+        $statuses = array_values($request->input('statuses', []));
+        $words = Word::whereIn('status', $statuses)->orderBy('rating')->orderBy('status', 'desc')->orderBy('id')->get();
 
-        return view('words.index', compact('words'));
+        return view('words.index', compact('words','statuses'));
     }
 
     public function learn(Request $request,Word $word)
@@ -36,6 +37,8 @@ class WordController extends Controller
             $res = TranslatorService::getYandexApiTranslate([$word->word])[0] ?? '';
             if($res == ''){
                 $res = $word->translate;
+            }else{
+                $res = '1. '.$res;
             }
         }
 
@@ -48,7 +51,7 @@ class WordController extends Controller
     public function parseSubtitles(string $path = '')
     {
         $text = mb_strtolower(file_get_contents($path));
-        $text = preg_replace('~[0-9\?\>\=]~', '', $text);
+        $text = preg_replace('~[0-9\?\>\=]~', ' ', $text);
         $arr = array_unique(str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя"));
         $words = Word::whereIn('word', array_values($arr))->pluck('id');
 

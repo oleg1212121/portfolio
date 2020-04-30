@@ -266,13 +266,18 @@ input#asc:checked ~ .sorting-label-asc {
 .answer {
     color:grey;
 }
-.hide_answer .answer {
+.hide_answer .answer textarea {
     color:transparent;
 }
+
+.hide_answer .answer textarea {
+    color:transparent;
+}
+
 .word-row{
     border: 1px solid grey;
 }
-td.answer:hover {
+td.answer textarea:hover {
     color:black;
 }
 tr td.word:hover {

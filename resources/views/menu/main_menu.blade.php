@@ -9,6 +9,7 @@
                         <li><a href="{{route('articles.index')}}" class="text-white">Заметки</a></li>
                         <li><a href="{{route('jobs.index')}}" class="text-white">Поиск работы</a></li>
                         <li><a href="{{route('statistics.index')}}" class="text-white">Статистика посещений</a></li>
+                        <li><a href="{{route('dashboard')}}" class="text-white">Диаграмма изучения</a></li>
                         <li><a href="{{route('words.index')}}" class="text-white">Слова</a></li>
                         <li><a href="{{route('films.index')}}" class="text-white">Фильмы</a></li>
                         @guest

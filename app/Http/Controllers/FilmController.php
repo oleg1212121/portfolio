@@ -60,7 +60,7 @@ class FilmController extends Controller
     public function show(Film $film)
     {
         $film = $film->load(['words' => function ($q) {
-            $q->where('status', '!=', 0);
+            $q->where('status', '!=', 0)->orderBy('status', 'desc');
         }]);
         return view('films.show', compact('film'));
     }

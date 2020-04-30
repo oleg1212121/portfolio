@@ -16,7 +16,7 @@ Route::group(['middleware' => 'statistic'], function(){
         Route::post('/translate_word/{word}', 'WordController@correctionTranslate');
         Route::post('/update_word/{word}', 'WordController@update');
         Route::post('/delete_word/{word}', 'WordController@destroy');
-        Route::get('dashboard', 'DashboardController@index');
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     });
 
     Route::get('/', function (){
