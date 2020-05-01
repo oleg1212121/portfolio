@@ -1,24 +1,28 @@
-<div class="table-responsive">
-    <table class="words table table-striped hide_answer">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Слово</th>
-            <th>Перевод</th>
-            <th>Выуч.</th>
-            <th>Зап.</th>
-            <th>Повт.</th>
-            <th>Уточн.</th>
-            <th>Испр.</th>
-            <th>Удал.</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($words as $item)
-            @component('components.words.words_table_row', ['item' => $item, 'index' => $loop->index + 1])@endcomponent
-        @endforeach
-        </tbody>
-    </table>
+<div class="row mb-4">
+    <div class="col">
+        <div class="table-responsive">
+            <table class="words table table-striped hide_answer">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Слово</th>
+                    <th>Перевод</th>
+                    <th>Выуч.</th>
+                    <th>Зап.</th>
+                    <th>Повт.</th>
+                    <th>Уточн.</th>
+                    <th>Испр.</th>
+                    <th>Удал.</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($words as $item)
+                    @component('components.words.words_table_row', ['item' => $item, 'index' => $loop->index + 1])@endcomponent
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 @push('words_table_row_scripts')

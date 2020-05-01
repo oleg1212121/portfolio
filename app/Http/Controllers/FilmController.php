@@ -54,15 +54,23 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  Request $request
      * @param  Film $film
      * @return \Illuminate\Http\Response
      */
-    public function show(Film $film)
+    public function show(Request $request, Film $film)
     {
-        $film = $film->load(['words' => function ($q) {
-            $q->where('status', '!=', 0)->orderBy('status', 'desc');
+        $statuses = array_values($request->input('statuses', []));
+
+        $film = $film->load(['words' => function ($q) use ($statuses) {
+            $q->when(count($statuses) > 0, function ($i) use ($statuses) {
+                return $i->whereIn('status', $statuses)->orderBy('status', 'desc');
+            }, function ($i) {
+                return $i->where('status', '>', 9)->orderBy('status', 'desc');
+            });
+
         }]);
-        return view('films.show', compact('film'));
+        return view('films.show', compact('film', 'statuses'));
     }
 
     /**

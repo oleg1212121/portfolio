@@ -49,7 +49,8 @@ class CreateFilmDictionary implements ShouldQueue
                 'word' => $item
             ],[
                 'translate' => TranslatorService::getYandexDictionaryTranslate($item),
-                'rating' => 6000
+                'rating' => 6000,
+                'status' => 9
             ]);
             array_push($indexes, $word->id);
         }

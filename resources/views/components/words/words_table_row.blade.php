@@ -1,7 +1,7 @@
 <tr class="word-row">
     <td width="15px">{{$index}}</td>
     <td class="word" width="50px">{{$item->word}}</td>
-    <td class="answer">
+    <td class="answer" width="550px">
         <textarea class="form-control" >{{$item->translate}}</textarea>
     </td>
     <td width="10px">

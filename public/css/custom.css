@@ -269,11 +269,6 @@ input#asc:checked ~ .sorting-label-asc {
 .hide_answer .answer textarea {
     color:transparent;
 }
-
-.hide_answer .answer textarea {
-    color:transparent;
-}
-
 .word-row{
     border: 1px solid grey;
 }
