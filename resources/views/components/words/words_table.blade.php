@@ -1,4 +1,4 @@
-<div class="row mb-4">
+<div class="row mb-4 no-gutters">
     <div class="col">
         <div class="table-responsive">
             <table class="words table table-striped hide_answer">
@@ -9,10 +9,10 @@
                     <th>Перевод</th>
                     <th>Выуч.</th>
                     <th>Зап.</th>
-                    <th>Повт.</th>
-                    <th>Уточн.</th>
-                    <th>Испр.</th>
-                    <th>Удал.</th>
+                    <th class="  mobile_hiding">Повт.</th>
+                    <th class=" mobile_hiding">Уточн.</th>
+                    <th class=" mobile_hiding">Испр.</th>
+                    <th class=" mobile_hiding">Удал.</th>
                 </tr>
                 </thead>
                 <tbody>

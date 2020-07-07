@@ -40,23 +40,24 @@ class CreateFilmDictionary implements ShouldQueue
     public function handle()
     {
         $text = mb_strtolower(Storage::get($this->film->file));
-        $text = preg_replace('~[0-9\?\>\-\=]~', '', $text);
+        $text = preg_replace('~[0-9\?\>\-\=]~', ' ', $text);
         $arr = array_values(array_unique(str_word_count($text, 1)));
 
         $indexes = [];
-        foreach ($arr as $item) {
-            $word = Word::firstOrCreate([
-                'word' => $item
-            ],[
-                'translate' => TranslatorService::getYandexDictionaryTranslate($item),
-                'rating' => 6000,
-                'status' => 9
-            ]);
-            array_push($indexes, $word->id);
-        }
-     
-        $this->film->words()->sync($indexes);
+        \DB::transaction(function () use ($arr, $indexes) {
+            foreach ($arr as $item) {
+                $word = Word::firstOrCreate([
+                    'word' => $item
+                ],[
+                    'translate' => '',
+                    'rating' => 6000,
+                    'status' => 9
+                ]);
+                array_push($indexes, $word->id);
+            }
 
+            $this->film->words()->sync($indexes);
+        });
 
 
     }

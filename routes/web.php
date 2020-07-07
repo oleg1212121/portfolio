@@ -27,8 +27,3 @@ Route::group(['middleware' => 'statistic'], function(){
 
 
 
-
-
-//Route::resource('services', 'ServiceController', ['services'])->only(['index']);
-//Route::post('services/get-hash', 'ServiceController@getHash');
-//Route::post('services/calculator', 'ServiceController@calculator');

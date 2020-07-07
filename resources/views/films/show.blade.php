@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container no-pad">
             @component('components.words.words_table', ['words' => $film->words])@endcomponent
         </div>
     </section>

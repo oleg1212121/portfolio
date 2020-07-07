@@ -4,27 +4,27 @@
     <td class="answer" width="550px">
         <textarea class="form-control" >{{$item->translate}}</textarea>
     </td>
-    <td width="10px">
-        <button data-id="{{$item->id}}" data-argument="-100" type="button" class="btn btn-dark mark_word">L
+    <td width="10px" >
+        <button data-id="{{$item->id}}" data-argument="-100" type="button" class="btn btn-dark mark_word  no-gutters">L
         </button>
     </td>
-    <td width="10px">
-        <button data-id="{{$item->id}}" data-argument="-1" type="button" class="btn btn-info mark_word">+
+    <td width="10px" >
+        <button data-id="{{$item->id}}" data-argument="-1" type="button" class="btn btn-info mark_word no-gutters">+
         </button>
     </td>
-    <td width="10px">
+    <td width="10px" class="  mobile_hiding">
         <button data-id="{{$item->id}}" data-argument="1" type="button" class="btn btn-info mark_word">-
         </button>
     </td>
-    <td width="10px">
+    <td width="10px" class="  mobile_hiding">
         <button data-id="{{$item->id}}" type="button" class="btn btn-success translate_word">T
         </button>
     </td>
-    <td width="10px">
+    <td width="10px" class="  mobile_hiding">
         <button data-id="{{$item->id}}" type="button" class="btn btn-success update_word">U
         </button>
     </td>
-    <td width="10px">
+    <td width="10px" class="  mobile_hiding">
         <button data-id="{{$item->id}}" type="button" class="btn btn-outline-danger delete_word">X
         </button>
     </td>

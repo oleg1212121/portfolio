@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\CreateFilmDictionary;
 use App\Models\Film;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
